@@ -1,24 +1,65 @@
-# README
+# ReadMe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 2/4/22
+- Finished writing out dream driven development in seeds.rb
+- Will now begin messing around with scaffolding to bring seeds file to life.
 
-Things you may want to cover:
+Migration commands: (will be added here)
 
-* Ruby version
+```
+rails g scaffold Activity title:string instructions:string submission_confirmation:string points:integer status:string
+```
 
-* System dependencies
+```
+rails g scaffold Advocate first_name:string last_name:string email:string zipcode:string
+```
+```
+rails g scaffold Announcement title:string body:string
+```
+```
+LEADERSHIPBOARD IS NEXT (maybe)
+```
 
-* Configuration
+- activites show page => show it's in a leaderboard
+- leaderboard show would list all activities
 
-* Database creation
+```
+rails g scaffold Leaderboard description:text             
+```
+- References advocate is wrong
+- LeadershipsBoards can be permanent or have a deadline you can set it public or private
 
-* Database initialization
 
-* How to run the test suite
+set root to announcements index
 
-* Services (job queues, cache servers, search engines, etc.)
+run migrations
 
-* Deployment instructions
+make sure postgres is running
 
-* ...
+```
+rails db:create
+rails db:migrate
+```
+
+boot server, should see activities index
+
+next, after climbing break:
+
+Get fake data (via Faker) generated on homepage
+
+
+## DATABASE NOTATION NOTES
+
+ONE TO MANY NOTATION
+- artist class exists
+- song class exists
+
+```
+$rails g migration AddArtistsToSong artist:references
+```
+
+MANY TO MANY NOTATION
+
+```
+ $ rails g migration CreatePlaylistSongs song:references playlist:references
+```
