@@ -1,12 +1,11 @@
 <div id="<%= dom_id leaderboard %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= leaderboard.title %>
+    <strong class="block font-large mb-1">The <%= leaderboard.title %> Leaderboard</strong>
+    
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= leaderboard.description %>
+    <strong class="block font-medium mb-1">Description: <%= leaderboard.description %></strong>
   </p>
 
   <% if action_name != "show" %>

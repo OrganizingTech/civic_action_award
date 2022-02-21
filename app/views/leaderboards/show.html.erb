@@ -6,16 +6,17 @@
 
     <%= render @leaderboard %>
     
-    <h3>Activities</h3>
+    <h3 class="text-4xl">Leaderboard Activities List:</h3>
+    
     <%= @leaderboard.activities.each do |activity| %>
+    <br>
     <div id="<%= dom_id activity %>">
       <p class="my-5">
-        <strong class="block font-medium mb-1">Title:</strong>
-        <%= activity.title %>
+        <strong class="block text-2xl mb-1"><%= link_to "#{activity.title}", activity_path(activity) %></strong>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Activity Instructions:</strong>
+        <strong class="block font-medium mb-1">Instructions:</strong>
         <%= activity.instructions %>
       </p>
 
@@ -25,8 +26,8 @@
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Points:</strong>
-        <%= activity.points %>
+        <strong class="block font-medium mb-1"><%= activity.points %> points</strong>
+        
       </p>
 
       <% if action_name != "show" %>

@@ -29,10 +29,12 @@ end
   )
 end
 
+point_values = [10, 35, 55, 80, 200]
 10.times do |n|
   Activity.create(
     title:  "#{n.to_s} do cool stuff",
-    user: User.all.sample
+    user: User.all.sample,
+    points: point_values.sample
   )
 end
 
@@ -47,7 +49,7 @@ end
     description: "leaderboard #{n} : put pressure on $LOCAL_ELECTION by fall"
   )
   lb.activities << Activity.all.sample(3)
-  puts lb
+  puts lb.to_json
 end
 
 # complete activities
