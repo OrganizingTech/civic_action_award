@@ -6,7 +6,36 @@
 
     <%= render @leaderboard %>
     
-    
+    <h3>Activities</h3>
+    <%= @leaderboard.activities.each do |activity| %>
+    <div id="<%= dom_id activity %>">
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Title:</strong>
+        <%= activity.title %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Activity Instructions:</strong>
+        <%= activity.instructions %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Submission confirmation Instructions:</strong>
+        <%= activity.submission_confirmation %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Points:</strong>
+        <%= activity.points %>
+      </p>
+
+      <% if action_name != "show" %>
+        <%= link_to "Show this activity", activity, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <hr class="mt-6">
+      <% end %>
+    </div>
+    <% end %>
+
 
     <%= link_to 'Edit this leaderboard', edit_leaderboard_path(@leaderboard), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">

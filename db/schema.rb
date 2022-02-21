@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_21_203630) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_21_211300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_21_203630) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "advocates", force: :cascade do |t|
@@ -67,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_21_203630) do
     t.integer "role"
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "leaderboard_activities", "activities"
   add_foreign_key "leaderboard_activities", "leaderboards"
 end

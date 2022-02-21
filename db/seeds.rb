@@ -17,19 +17,22 @@ admin = User.create(
 
 5.times do
   User.create(
-    name: Faker::Name.full_name,
+    name: Faker::Name.name,
     email: Faker::Internet.email,
   )
 end
 
 5.times do
-  Announcement.create(title: Faker::Marketing.buzzwords,
-                      body: Faker::Quote.famous_last_words)
+  Announcement.create(
+    title: Faker::Marketing.buzzwords,
+    body: Faker::Quote.famous_last_words
+  )
 end
 
 10.times do |n|
   Activity.create(
-    title:  "#{n.to_s} do cool stuff"
+    title:  "#{n.to_s} do cool stuff",
+    user: User.all.sample
   )
 end
 
@@ -40,25 +43,18 @@ end
 5.times do |n|
   lb = Leaderboard.create(
     created_by: admin,
+    title: "#{n}: something something",
     description: "leaderboard #{n} : put pressure on $LOCAL_ELECTION by fall"
   )
+  lb.activities << Activity.all.sample(3)
   puts lb
 end
 
 # complete activities
-
 Leaderboard.all.each do |lb|
-  lb.add_activity(Activity.all.sample)
-  lb.add_activity(Activity.all.sample)
-  lb.add_activity(Activity.all.sample)
-  lb.add_activity(Activity.all.sample)
-  lb.add_activity(Activity.all.sample)
+  lb.activities << Activity.all.sample(3)
   
-  lb.add_participant(User.all.sample)
-  lb.add_participant(User.all.sample)
-  lb.add_participant(User.all.sample)
-  lb.add_participant(User.all.sample)
-  lb.add_participant(User.all.sample)
+  lb.participants << User.all.sample(3)
 end
 
 # complete some activities

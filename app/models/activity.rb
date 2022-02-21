@@ -8,7 +8,7 @@ class Activity < ApplicationRecord
     approved: 1
   }
 
-  # def approve
-  #   update! status: 1
-  # end
+  def approve
+    update! status: 1
+  end
 end
