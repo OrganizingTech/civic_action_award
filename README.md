@@ -24,7 +24,7 @@ LEADERSHIPBOARD IS NEXT (maybe)
 - leaderboard show would list all activities
 
 ```
-rails g scaffold Leaderboard description:text             
+rails g scaffold Leaderboard description:text references:advocate
 ```
 - References advocate is wrong
 - LeadershipsBoards can be permanent or have a deadline you can set it public or private
