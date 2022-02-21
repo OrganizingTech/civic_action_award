@@ -20,7 +20,7 @@ rails g scaffold Announcement title:string body:string
 LEADERSHIPBOARD IS NEXT (maybe)
 ```
 
-- activites show page => show it's in a leaderboard
+- activities show page => show it's in a leaderboard
 - leaderboard show would list all activities
 
 ```
