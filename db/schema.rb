@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_21_180558) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_21_203630) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_21_180558) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "leaderboard_activities", force: :cascade do |t|
+    t.bigint "leaderboard_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_leaderboard_activities_on_activity_id"
+    t.index ["leaderboard_id"], name: "index_leaderboard_activities_on_leaderboard_id"
+  end
+
   create_table "leaderboards", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -58,4 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_21_180558) do
     t.integer "role"
   end
 
+  add_foreign_key "leaderboard_activities", "activities"
+  add_foreign_key "leaderboard_activities", "leaderboards"
 end
