@@ -55,10 +55,8 @@ end
 # complete activities
 Leaderboard.all.each do |lb|
   lb.activities << Activity.all.sample(3)
-  
-  lb.participants << User.all.sample(3)
+
+  # lb.participants << User.all.sample(3)
 end
 
 # complete some activities
-
-
