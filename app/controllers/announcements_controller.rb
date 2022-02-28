@@ -3,6 +3,7 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements or /announcements.json
   def index
+    # require "pry"; binding.pry
     @announcements = Announcement.all
   end
 
